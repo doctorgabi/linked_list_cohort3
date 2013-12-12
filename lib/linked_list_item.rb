@@ -6,9 +6,8 @@ class LinkedListItem
   def <=>(a)
     return 1 if self.payload.class == Symbol && a.payload.class == String
     return -1 if self.payload.class == String && a.payload.class == Symbol
-    # return 1 if self.payload.class == String && a.payload.class == Number
-    # return -1 if self.payload.class == Number && a.payload.class == String
-
+    return 1 if self.payload.class == String && (a.payload.class == Fixnum || a.payload.class == Bignum)
+    return -1 if (self.payload.class == Fixnum || a.payload.class == Bignum) && a.payload.class == String
     self.payload <=> a.payload
   end
 
