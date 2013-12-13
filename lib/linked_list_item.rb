@@ -28,11 +28,7 @@ class LinkedListItem
   end
 
   def last?
-    if next_list_item == nil
-      true
-    else
-      false
-    end
+    next_list_item.nil?
   end
 
 end
