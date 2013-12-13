@@ -24,9 +24,9 @@ class LinkedList
       @last_node = @first_node
       @list = payload
     else
-      current_node = @first_node
-      while current_node.last? == false
-        current_node = current_node.next_list_item
+      last_node = @first_node
+      while last_node.last? == false
+        last_node = last_node.next_list_item
       end
       last_node.next_list_item = LinkedListItem.new(payload)
       @counter +=1
