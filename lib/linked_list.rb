@@ -84,7 +84,9 @@ class LinkedList
   end
 
   def remove(index)
-    if index == 0
+    if index > @counter
+      raise IndexError
+    elsif index == 0
       @first_node = @first_node.next_list_item
     else
       i = index - 1
