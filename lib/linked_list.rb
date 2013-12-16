@@ -1,28 +1,19 @@
 class LinkedList
+  #attr_accessor :[]
 
-  def initialize(payload = nil)
+  def initialize(*payload)
     @counter = 0
     @last_node = nil
-    if payload
-      @list = payload
-    else
-     @list = nil
-   end
+    payload.each do |item|
+      add_item(item)
+    end
   end
-
-
-  # def test_17_initialize_takes_seed_arguments
-  #   ll = LinkedList.new("foo", "bar", "grille")
-  #   assert_equal '| foo, bar, grille |', ll.to_s
-  # end
-
 
   def add_item(payload)
     if @first_node.nil?
       @first_node = LinkedListItem.new(payload)
       @counter += 1
       @last_node = @first_node
-      @list = payload
     else
       last_node = @first_node
       while last_node.last? == false
@@ -31,7 +22,6 @@ class LinkedList
       last_node.next_list_item = LinkedListItem.new(payload)
       @counter +=1
       @last_node = @last_node.next_list_item
-      @list += ', ' + payload
     end
   end
 
@@ -64,11 +54,47 @@ class LinkedList
   end
 
   def to_s
-    if @list.nil?
-      "| |"
+    if @first_node.nil?
+      '| |'
     else
+      @list = @first_node.payload
+      x = @first_node
+      while x.last? == false
+        @list += ", #{x.next_list_item.payload}"
+        x = x.next_list_item
+      end
       '| ' + @list + ' |'
     end
+  end
+
+  def [](k)
+    x = @first_node
+    k.times do
+      x = x.next_list_item
+    end
+    x.payload
+  end
+
+  def []= (k, v)
+    x = @first_node
+    k.times do
+      x = x.next_list_item
+    end
+    x.payload = v
+  end
+
+  def remove(index)
+    if index == 0
+      @first_node = @first_node.next_list_item
+    else
+      i = index - 1
+      x = @first_node
+      i.times do
+        x = x.next_list_item
+      end
+      x.next_list_item = x.next_list_item.next_list_item
+      end
+    @counter -= 1
   end
 
 end
