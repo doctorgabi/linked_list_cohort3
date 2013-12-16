@@ -99,4 +99,13 @@ class LinkedList
     @counter -= 1
   end
 
+  def indexOf(payload)
+    counter = 0
+    comparison_payload = @first_node.payload
+    while comparison_payload != payload
+      comparison_payload = comparison_payload.next_list_item.payload
+      counter += 1
+    end
+    counter
+  end
 end
