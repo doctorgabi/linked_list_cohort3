@@ -139,11 +139,12 @@ class LinkedList
       a = @first_node
       while a.next_list_item.nil? == false
         return a <= a.next_list_item #shorthand for true if...
-        # return true if a.payload.class == String && a.next_list_item.payload.class == Symbol
-        # return true if a.payload.class == Fixnum && a.next_list_item.payload.class == (String || Symbol)
         a = a.next_list_item
       end
     end
   end
 
+  def sort
+    "| |"
+  end
 end
