@@ -100,28 +100,26 @@ class LinkedList
 
   def indexOf(payload)
     counter = 0
+
     if @first_node
       x = @first_node
       comparison_payload = x.payload
 
       while comparison_payload != payload
-        if x
+        if x.next_list_item
           x = x.next_list_item
-          if x
-            comparison_payload = x.payload
-            counter += 1
-          else
-            counter = nil
-            break
-          end
+          comparison_payload = x.payload
+          counter += 1
         else
           counter = nil
           break
         end
       end
+
     else
       counter = nil
     end
+
     counter
   end
 
