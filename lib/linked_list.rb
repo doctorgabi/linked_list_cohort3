@@ -125,25 +125,20 @@ class LinkedList
   end
 
   def sorted?
-    if @first_node.nil?
+    a = @first_node
+    if a.nil?
       true
-    elsif @first_node.next_list_item.nil?
+    elsif a.next_list_item.nil?
+      true
+    elsif a.payload == a.next_list_item.payload
+      true
+    elsif a.payload < a.next_list_item.payload
       true
     end
+    # node_b = @first_node.next_list_item
+    # if node_a.payload == node_b.payload
+    #   true
+    # end
 
-
-    # current_node = @first_node
-    # while current_node.last? == false
-    #   current_node = current_node.next_list_item
-
-      #compare_node = current_node.next_list_item
-
-    #this is asking if it is sorted.
-    #It must check the links in the list and see if they're in order,
-    #then return true or false if not
-
-    #return true if @payload.length == 0
   end
-
-
 end
