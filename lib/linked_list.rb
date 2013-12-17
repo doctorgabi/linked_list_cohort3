@@ -125,20 +125,17 @@ class LinkedList
   end
 
   def sorted?
-    a = @first_node
-    if a.nil?
+    if @first_node.nil?
       true
-    elsif a.next_list_item.nil?
+    elsif @first_node.next_list_item.nil?
       true
-    elsif a.payload == a.next_list_item.payload
-      true
-    elsif a.payload < a.next_list_item.payload
-      true
+    else
+      a = @first_node
+      while a.next_list_item.nil? == false
+        return true if a.payload <= a.next_list_item.payload
+        a = a.next_list_item
+      end
     end
-    # node_b = @first_node.next_list_item
-    # if node_a.payload == node_b.payload
-    #   true
-    # end
-
   end
+
 end
