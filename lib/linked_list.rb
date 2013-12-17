@@ -102,11 +102,22 @@ class LinkedList
   def indexOf(payload)
     counter = 0
     x = @first_node
-    comparison_payload = @first_node.payload
+    comparison_payload = x.payload
+
     while comparison_payload != payload
-      x = x.next_list_item
-      comparison_payload = x.payload
-      counter += 1
+      if x
+        x = x.next_list_item
+        if x
+          comparison_payload = x.payload
+          counter += 1
+        else
+          counter = nil
+          break
+        end
+      else
+        counter = nil
+        break
+      end
     end
     counter
   end
