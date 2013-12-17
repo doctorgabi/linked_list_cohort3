@@ -1,5 +1,4 @@
 class LinkedList
-  #attr_accessor :[]
 
   def initialize(*payload)
     @counter = 0
@@ -101,25 +100,31 @@ class LinkedList
 
   def indexOf(payload)
     counter = 0
-    x = @first_node
-    comparison_payload = x.payload
+    if @first_node
+      x = @first_node
+      comparison_payload = x.payload
 
-    while comparison_payload != payload
-      if x
-        x = x.next_list_item
+      while comparison_payload != payload
         if x
-          comparison_payload = x.payload
-          counter += 1
+          x = x.next_list_item
+          if x
+            comparison_payload = x.payload
+            counter += 1
+          else
+            counter = nil
+            break
+          end
         else
           counter = nil
           break
         end
-      else
-        counter = nil
-        break
       end
+    else
+      counter = nil
     end
     counter
   end
+
+
 
 end
