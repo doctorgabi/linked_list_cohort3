@@ -9,6 +9,7 @@ class LinkedList
     end
   end
 
+#adds a new object with a payload to the last position in the list
   def add_item(payload)
     if @first_node.nil?
       @first_node = LinkedListItem.new(payload)
@@ -25,6 +26,7 @@ class LinkedList
     end
   end
 
+#returns the value(payload) for a given key(index)
   def get(index)
     if index < 0
       raise IndexError
@@ -41,10 +43,12 @@ class LinkedList
     end
   end
 
+#returns the size of the linked list
   def size
     @counter
   end
 
+#returns the value of the last node
   def last
     if @last_node.nil?
       nil
@@ -53,6 +57,7 @@ class LinkedList
     end
   end
 
+#converts the entire contents of the linked list to a string.
   def to_s
     if @first_node.nil?
       '| |'
@@ -67,6 +72,7 @@ class LinkedList
     end
   end
 
+#takes the key and searches for its value
   def [](k)
     x = @first_node
     k.times do
@@ -75,6 +81,7 @@ class LinkedList
     x.payload
   end
 
+#takes the key and repalaces its value (payload) with user defined value
   def []= (k, v)
     x = @first_node
     k.times do
@@ -83,6 +90,7 @@ class LinkedList
     x.payload = v
   end
 
+#user passes index to remove. This removes the pointer from the index to its successor.
   def remove(index)
     if index > @counter
       raise IndexError
@@ -99,13 +107,12 @@ class LinkedList
     @counter -= 1
   end
 
+#user passes in a value and this finds the key
   def indexOf(payload)
     counter = 0
-
     if @first_node
       x = @first_node
       comparison_payload = x.payload
-
       while comparison_payload != payload
         if x.next_list_item
           x = x.next_list_item
@@ -116,15 +123,14 @@ class LinkedList
           break
         end
       end
-
     else
       counter = nil
     end
-
     counter
   end
 
-  def sorted?
+#this does not sort it, it merely asks if it is sorted or not, Boolean.
+ def sorted?
     if @first_node.nil?
       true
     elsif @first_node.next_list_item.nil?
@@ -132,7 +138,9 @@ class LinkedList
     else
       a = @first_node
       while a.next_list_item.nil? == false
-        return true if a.payload <= a.next_list_item.payload
+        return a <= a.next_list_item #shorthand for true if...
+        # return true if a.payload.class == String && a.next_list_item.payload.class == Symbol
+        # return true if a.payload.class == Fixnum && a.next_list_item.payload.class == (String || Symbol)
         a = a.next_list_item
       end
     end
