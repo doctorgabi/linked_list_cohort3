@@ -3,6 +3,7 @@ class LinkedList
   def initialize(*payload)
     @counter = 0
     @last_node = nil
+    #@payload = payload
     payload.each do |item|
       add_item(item)
     end
@@ -123,6 +124,26 @@ class LinkedList
     counter
   end
 
+  def sorted?
+    if @first_node.nil?
+      true
+    elsif @first_node.next_list_item.nil?
+      true
+    end
+
+
+    # current_node = @first_node
+    # while current_node.last? == false
+    #   current_node = current_node.next_list_item
+
+      #compare_node = current_node.next_list_item
+
+    #this is asking if it is sorted.
+    #It must check the links in the list and see if they're in order,
+    #then return true or false if not
+
+    #return true if @payload.length == 0
+  end
 
 
 end
