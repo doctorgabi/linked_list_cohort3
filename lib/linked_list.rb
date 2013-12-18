@@ -144,7 +144,42 @@ class LinkedList
     end
   end
 
+#loops to grab each item and loops to compare it to each item and reorder pairwise.
   def sort
-    "| |"
+    unless @first_node.nil? || @first_node.last?
+      comparator = @first_node
+      index = 0
+      @counter-1.times do
+        if comparator > comparator.next_list_item# if 1st is > 2nd
+          moving_item = comparator#call 1st the moving item
+          moving_item.next_list_item = comparator.next_list_item.next_list_item.next_list_item#moving item's next = 4th
+          comparator.next_list_item.next_list_item = moving_item #3rd = moving item
+          remove(index)#cuts out the 1st(comparator) item so the rest will shuffle left one
+          comparator = comparator.next_list_item#iterate the 1st to the next position
+          index += 1#iterate the associated index
+        end
+      end
+    end
+    self
   end
+
 end
+    # #outer loop:
+    # unless @first_node.nil? || @first_node.last?
+    #   index = 0
+    #   a = @first_node
+    #   if a > a.next_list_item
+    #     a = moving_item
+
+    #     #inner loop:
+    #     i = 0
+    #     comparator = a.next_list_item
+    #     @counter.times do
+    #       if a < a.next_list_item
+
+    #       comparator = comparator.next_list_item
+    #     end
+    #   remove(index)
+    #   a = a.next_list_item
+    #   index += 1
+    #   end
